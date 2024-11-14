@@ -2,10 +2,10 @@ package com.example.daggerhilthw1
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.daggerhilthw1.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,13 +19,12 @@ class MainFragment : Fragment() {
     val customAdapter by lazy { CustomAdapter(emptyList<CoinModel>()) }
 
 
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainBinding.inflate(inflater, container,false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,7 +35,7 @@ class MainFragment : Fragment() {
         binding.recyclerView.adapter = customAdapter
         binding.recyclerView.hasFixedSize()
 
-        coinViewModel.coinsData.observe(viewLifecycleOwner){coins ->
+        coinViewModel.coinsData.observe(viewLifecycleOwner) { coins ->
             customAdapter.updateList(coins)
         }
 
@@ -46,7 +45,6 @@ class MainFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 
 
 }

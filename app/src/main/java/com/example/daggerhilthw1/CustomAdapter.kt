@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daggerhilthw1.databinding.ListItemBinding
 
-class CustomAdapter(private var coins: List<CoinModel>):
+class CustomAdapter(private var coins: List<CoinModel>) :
     RecyclerView.Adapter<CustomAdapter.CoinItemHolder>() {
 
     override fun onCreateViewHolder(
@@ -13,7 +13,7 @@ class CustomAdapter(private var coins: List<CoinModel>):
         viewType: Int
     ): CoinItemHolder {
 
-        val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return CoinItemHolder(binding)
     }
@@ -29,8 +29,8 @@ class CustomAdapter(private var coins: List<CoinModel>):
 
     override fun getItemCount() = coins.size
 
-    class CoinItemHolder(val binding: ListItemBinding):
-        RecyclerView.ViewHolder(binding.root){
+    class CoinItemHolder(val binding: ListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
 
     }
@@ -39,7 +39,6 @@ class CustomAdapter(private var coins: List<CoinModel>):
         coins = newList
         notifyDataSetChanged()
     }
-
 
 
 }
