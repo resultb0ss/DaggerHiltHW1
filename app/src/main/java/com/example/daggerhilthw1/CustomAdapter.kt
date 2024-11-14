@@ -1,16 +1,11 @@
 package com.example.daggerhilthw1
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.daggerhilthw1.databinding.ListItemBinding
 
-class CustomAdapter(private val coins: MutableList<CoinModel>):
+class CustomAdapter(private var coins: List<CoinModel>):
     RecyclerView.Adapter<CustomAdapter.CoinItemHolder>() {
 
     override fun onCreateViewHolder(
@@ -18,10 +13,9 @@ class CustomAdapter(private val coins: MutableList<CoinModel>):
         viewType: Int
     ): CoinItemHolder {
 
-        val lifecycleOwner = parent.context as LifecycleOwner
         val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
 
-        return CoinItemHolder(binding, lifecycleOwner)
+        return CoinItemHolder(binding)
     }
 
     override fun onBindViewHolder(
@@ -35,10 +29,15 @@ class CustomAdapter(private val coins: MutableList<CoinModel>):
 
     override fun getItemCount() = coins.size
 
-    class CoinItemHolder(val binding: ListItemBinding, private val lifeCycleOwner: LifecycleOwner):
+    class CoinItemHolder(val binding: ListItemBinding):
         RecyclerView.ViewHolder(binding.root){
 
 
+    }
+
+    fun updateList(newList: List<CoinModel>) {
+        coins = newList
+        notifyDataSetChanged()
     }
 
 
