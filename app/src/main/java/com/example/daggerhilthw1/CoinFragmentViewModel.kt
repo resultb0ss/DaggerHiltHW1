@@ -2,11 +2,12 @@ package com.example.daggerhilthw1
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
-@ViewModelScoped
-class CoinFragmentViewModel: ViewModel()
+@HiltViewModel
+class CoinFragmentViewModel @Inject constructor(): ViewModel()
 {
 
     @Inject
